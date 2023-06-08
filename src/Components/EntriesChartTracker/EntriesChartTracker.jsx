@@ -3,13 +3,21 @@ import { Chart } from "react-google-charts";
 
 const EntriesChartTracker = (props) => {
 
-    useEffect(() =>{
+    const [chart, chartData] = useState([]);
 
-    })
+
+    useEffect(() =>{
+        let tempChartData = props.parentEntries.map(entry => {
+            return [entry.date, entry.weight];
+        });
+        setChartData = (tempChartData);
+
+    }, [props.parentEntries])
+
     return ( 
       <Chart
       chartType="LineChart"
-      data={[["Date", "Weight"], ['2022-06-06', 167], ['2022-07-07', 170], ['2022-08-19', 172]]}
+      data={[["Date", "Weight"], ...chartData]}
       width="100%"
       height="400px"
       legendToggle
