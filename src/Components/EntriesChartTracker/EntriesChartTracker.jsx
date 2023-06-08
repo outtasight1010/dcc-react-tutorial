@@ -3,10 +3,10 @@ import { Chart } from "react-google-charts";
 
 const EntriesChartTracker = (props) => {
 
-    const [chart, chartData] = useState([]);
+    const [chartData, setChartData] = useState([]);
 
 
-    useEffect(() =>{
+    useEffect(() => {
         let tempChartData = props.parentEntries.map(entry => {
             return [entry.date, entry.weight];
         });
